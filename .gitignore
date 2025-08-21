@@ -1,0 +1,67 @@
+# Dependencies
+node_modules/
+*/node_modules/
+packages/*/node_modules/
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+packages/*/dist/
+packages/*/build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Testing
+coverage/
+.nyc_output/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Package manager
+.npm
+.yarn-integrity
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
+
+# Midnight specific
+deployments.json
+midnight.config.local.json
+proof-server-data/
+
+# OS files
+Thumbs.db
+Desktop.ini
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+*.md
+!README.md

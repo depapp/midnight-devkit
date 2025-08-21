@@ -1,0 +1,37 @@
+{
+  "name": "@midnight-devkit/playground",
+  "version": "1.0.0",
+  "description": "Interactive ZK Playground for Midnight Network",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint src/**/*.{ts,tsx}",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.15.0",
+    "@monaco-editor/react": "^4.5.0",
+    "axios": "^1.5.0",
+    "zustand": "^4.4.0",
+    "react-flow-renderer": "^10.3.0",
+    "recharts": "^2.8.0",
+    "lucide-react": "^0.280.0",
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^1.14.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5.0.0",
+    "vite": "^4.4.0"
+  },
+  "license": "Apache-2.0"
+}
