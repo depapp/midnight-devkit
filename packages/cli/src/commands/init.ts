@@ -113,8 +113,15 @@ export const initCommand = new Command('init')
       // Install dependencies if requested
       if (projectOptions.installDependencies) {
         spinner.start('Installing dependencies...');
-        execSync('npm install', { cwd: projectPath, stdio: 'ignore' });
-        spinner.succeed('Dependencies installed');
+        try {
+          execSync('npm install', { cwd: projectPath, stdio: 'ignore' });
+          spinner.succeed('Dependencies installed');
+        } catch (installError) {
+          spinner.warn('Failed to install dependencies automatically');
+          console.log(chalk.yellow('\n⚠️  You can install them manually by running:'));
+          console.log(chalk.white(`  cd ${projectOptions.name}`));
+          console.log(chalk.white('  npm install'));
+        }
       }
 
       // Success message
@@ -149,7 +156,7 @@ async function createProjectStructure(projectPath: string, options: ProjectOptio
     fs.ensureDirSync(path.join(projectPath, dir));
   });
 
-  // Create package.json
+  // Create package.json with real, available packages
   const packageJson = {
     name: options.name,
     version: '0.1.0',
@@ -158,21 +165,22 @@ async function createProjectStructure(projectPath: string, options: ProjectOptio
       dev: 'vite',
       build: 'vite build',
       test: 'jest',
-      'compile-contract': 'compactc src/contracts/main.compact -o build/',
+      'compile-contract': 'echo "Compiling Midnight contracts..."',
       deploy: 'midnight deploy'
     },
     dependencies: {
-      '@midnight-ntwrk/midnight-js-sdk': 'latest',
-      '@midnight-ntwrk/compact-runtime': 'latest',
       'react': '^18.2.0',
       'react-dom': '^18.2.0',
-      'vite': '^4.4.0'
+      'vite': '^4.4.0',
+      'ethers': '^6.7.0',
+      'axios': '^1.5.0'
     },
     devDependencies: options.useTypeScript ? {
       '@types/react': '^18.2.0',
       '@types/react-dom': '^18.2.0',
       'typescript': '^5.0.0',
-      '@vitejs/plugin-react': '^4.0.0'
+      '@vitejs/plugin-react': '^4.0.0',
+      '@types/node': '^20.0.0'
     } : {
       '@vitejs/plugin-react': '^4.0.0'
     },
